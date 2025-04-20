@@ -16,8 +16,7 @@ This project was created for the **RISC-V Hackathon Online** under the **Codasip
 
 **How to access Codasip Studio:**
 1. Visit the official website: [https://www.codasip.com](https://www.codasip.com)
-2. Use the credentials provided by the hackathon organizers or request a trial/demo if available.
-3. Download and install Codasip Studio as per the instructions in the [Google Drive Link](https://drive.google.com/drive/u/0/folders/12udrh8lS_-z2D6IOP6jJ5xWX0-KhPNoS).
+2. Download and install Codasip Studio as per the instructions in the [Google Drive Link](https://drive.google.com/drive/u/0/folders/12udrh8lS_-z2D6IOP6jJ5xWX0-KhPNoS).
 
 Inside Codasip Studio:
 - **`hackathon_sw` project** contains the C software implementation.
@@ -37,7 +36,7 @@ These models use the **Transformer architecture** under the hood.
 
 ---
 
-### 🏗️ Transformer Architecture (Simplified)
+### 🏗️ Transformer Architecture 
 A **Transformer** processes sequences (like sentences) using the following steps:
 1. **Token Embedding:** Convert each word into a vector (numbers representing meaning).
 2. **Self-Attention:** Each word looks at other words in the sentence to understand context.
