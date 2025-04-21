@@ -113,7 +113,7 @@ The CPU cycles required to complete the transformer encoder execution were reduc
 
 The following figure shows the comparison of CPU cycles before and after optimization:
 
-![Result](Code/Result.png)
+![Result](Result.png)
 ```
 
 ---
