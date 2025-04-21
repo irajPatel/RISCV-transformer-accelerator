@@ -1,0 +1,72 @@
+#include "config.hcodal"
+#include "opcodes.hcodal"
+#include "opcodes_hackaton.hcodal"
+#include "isa.hcodal"
+
+// part of the main ISA
+
+DEF_OPC_GROUP(opc_hackaton_custom_i, hackaton_custom_a, "hackaton_custom_instr_a", OPC_HACKATON_CUSTOM_A)
+DEF_OPC_GROUP(opc_hackaton_custom_i, hackaton_custom_b, "hackaton_custom_instr_b", OPC_HACKATON_CUSTOM_B)
+DEF_OPC_GROUP(opc_hackaton_custom_i, hackaton_custom_c, "hackaton_custom_instr_c", OPC_HACKATON_CUSTOM_C)
+DEF_OPC_GROUP(opc_hackaton_custom_i, hackaton_custom_d, "hackaton_custom_instr_d", OPC_HACKATON_CUSTOM_D)
+DEF_OPC_GROUP(opc_hackaton_custom_i, hackaton_custom_e, "hackaton_custom_instr_e", OPC_HACKATON_CUSTOM_E)
+
+set isa += i_ext_hackaton;
+
+element i_ext_hackaton
+{
+    use opc_hackaton_custom_i as opc;
+    use reg_any as rs_1, rs_2, dst;
+
+    assembly { opc dst "," rs_1 "," rs_2 };
+    binary { 0:bit[7] rs_2 rs_1 opc dst OPC_HACKATON };
+
+    semantics
+    {
+        int32 result, s1, s2, s3;
+        int32 simd_a0, simd_a1, simd_b0, simd_b1, accumulator;
+        int64 summa;
+
+        s1 = rf_gpr_read(rs_1);  // Read the value of rs_1
+        s2 = rf_gpr_read(rs_2);  // Read the value of rs_2
+        s3 = rf_gpr_read(dst);   // Read the value of dst
+        //printf("s1 = %d, s2 = %d, s3 = %d\n", s1, s2, s3);
+        switch (opc)
+        {
+            case OPC_HACKATON_CUSTOM_A:  // Example: ADD_OPERATION
+               
+              result = s3 + ((s1 * s2) >> 8);
+              break;
+            case OPC_HACKATON_CUSTOM_B:  
+                // Perform scaling using left shift instead of multiplication: (s1 << 8) / s2
+                result = (s1 << 8) / s2;  // Shift left by 8 to multiply by 256
+                break;
+            case OPC_HACKATON_CUSTOM_C:  
+                // Generalized comparator: if s1 < s2, return 0; else return s1
+                result = (s1 < s2) ? s2 : s1;
+                break;
+            case OPC_HACKATON_CUSTOM_D:  // Example: ADDITION_OPERATION
+                // Perform addition of two operands
+                result = s1 + s2;  // Add s1 and s2 together
+                break;
+
+             case OPC_HACKATON_CUSTOM_E:  
+                 float fx = *((float*)&s1);     // s1 = input float
+                int32_t scale = s2;            // s2 = integer Q_SCALE
+                float fq = (float)scale;
+                float r = (fx >= 0.0f) ? 0.5f : -0.5f;
+                int32_t q = (int32_t)(fx * fq + r);
+                // Saturate to int16_t range
+                result = (q > 32767) ? 32767 : (q < -32768 ? -32768 : q);
+                break;
+               
+                 
+            default:
+                result = 0;
+                break;
+        }
+
+        rf_gpr_write(dst, result);  // Write the result back to dst register
+    };
+};
+
