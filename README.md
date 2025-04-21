@@ -101,19 +101,17 @@ In this Codasip Hackathon:
 - Build the project.
 - Run the simulation to verify the updated behavior and performance improvements using the custom instructions.
 
-Here’s the clean `.md` format you asked for (copy-paste ready):
+## 📊 Results
 
----
+After integrating the custom single-cycle instructions into the CPU model, a significant performance improvement was achieved.
 
-```markdown
-## Results
+The figure below shows the result:
 
-With the use of all the custom instructions implemented, I was able to significantly optimize the CPU performance.  
-The CPU cycles required to complete the transformer encoder execution were reduced from **29,360** to approximately **2,298**, achieving around a **13× improvement** in execution time.
+![Result](Codes/Result.png)
 
-The following figure shows the comparison of CPU cycles before and after optimization:
+By carefully designing and utilizing the custom instructions, we were able to **reduce the CPU cycle count from approximately 29,360 cycles to just 2,298 cycles**.  
+This translates to an **~13× improvement in execution efficiency** for the target workload.
 
-![Result](Result.png)
 ```
 
 ---
