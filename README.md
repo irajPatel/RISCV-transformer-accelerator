@@ -107,7 +107,7 @@ After integrating the custom single-cycle instructions into the CPU model, a sig
 
 The figure below shows the result:
 
-![Result](Codes/Result.png)
+![Result](Result.png)
 
 By carefully designing and utilizing the custom instructions, we were able to **reduce the CPU cycle count from approximately 29,360 cycles to just 2,298 cycles**.  
 This translates to an **~13× improvement in execution efficiency** for the target workload.
