@@ -112,7 +112,6 @@ The figure below shows the result:
 By carefully designing and utilizing the custom instructions, we were able to **reduce the CPU cycle count from approximately 29,360 cycles to just 2,298 cycles**.  
 This translates to an **~13× improvement in execution efficiency** for the target workload.
 
-```
 
 ---
 
@@ -124,8 +123,7 @@ This translates to an **~13× improvement in execution efficiency** for the targ
 | After Optimization  | 2,298      |
 | Improvement         | ~13×       |
 
-It would look even better if you want your README to be super professional! 🚀  
-Just tell me!
+
 
 
 # Custom RISC-V Instructions for Transformer Encoder Optimization
