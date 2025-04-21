@@ -118,7 +118,7 @@ The following figure shows the comparison of CPU cycles before and after optimiz
 
 ---
 
-Would you also want a very small table too (optional), like:
+
 
 | Version            | CPU Cycles |
 |--------------------|------------|
